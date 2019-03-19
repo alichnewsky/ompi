@@ -1056,7 +1056,7 @@ static int regex_parse_node_range(char *base, char *range, int num_digits, char 
     for (found = false, i = 0; i < len; ++i) {
         if (isdigit((int) range[i])) {
             if (!found) {
-                start = atoi(range + i);
+                start = strtoull(range + i, NULL, 10);
                 found = true;
                 break;
             }
@@ -1086,7 +1086,7 @@ static int regex_parse_node_range(char *base, char *range, int num_digits, char 
          */
         for (; i < len; ++i) {
             if (isdigit(range[i])) {
-                end = strtol(range + i, NULL, 10);
+                end = strtoull(range + i, NULL, 10);
                 found = true;
                 break;
             }
